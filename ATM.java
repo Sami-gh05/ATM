@@ -231,6 +231,7 @@ public class ATM implements ActionListener {
 
         frame2Fa.add(confirmPassButtonFa);
         frame2Fa.add(passLabelFa);
+        frame2Fa.add(passInput);
 
         frameMainFa.add(passChangeButtonFa);
         frameMainFa.add(inventoryButtonFa);
@@ -261,30 +262,33 @@ public class ATM implements ActionListener {
         ATM atm = new ATM();
     }
 
+    //repetitive components should be added to different frames in actiosListner method's implementation
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==lanButtonFa){
+            frame2Fa.add(passInput);
+            passInput.setText("");
+
             frame2Fa.setVisible(true);
             frame1.setVisible(false);
-            passInput.setText("");
-            frame2Fa.add(passInput);
         }
         if(e.getSource()== confirmPassButtonFa){
             frameMainFa.setVisible(true);
             frame2Fa.setVisible(false);
             passInput.setText("");
-
         }
         if(e.getSource()== confirmButtonFa){
-            //hamaro false mikonam bejoz safheye nahayi chon malum nist tu kudum safhe hastim
-            frameCashFa.remove(backButtonFa);
-            frameTransferFa.remove(backButtonFa);
-            frameInventoryFa.remove(backButtonFa);
-            framePassChangeFa.remove(backButtonFa);
             frameFinalFa.add(backButtonFa);
-            passInput.setText("");
 
+            //hameye input ha ro refresh va clear mikonim
+            passInput.setText("");
+            cashInput.setText("");
+            numInput.setText("");
+            transferInput.setText("");
+
+            //hamaro false mikonam bejoz safheye nahayi chon malum nist tu kudum safhe hastim
             frameFinalFa.setVisible(true);
+
             frameInventoryFa.setVisible(false);
             frameCashFa.setVisible(false);
             frameTransferFa.setVisible(false);
@@ -293,6 +297,7 @@ public class ATM implements ActionListener {
         if(e.getSource()== backButtonFa){
             //hamaro false mikonam bejoz safheye asli chon malum nist tu kudum safhe hastim
             frameMainFa.setVisible(true);
+
             frameInventoryFa.setVisible(false);
             frameCashFa.setVisible(false);
             frameTransferFa.setVisible(false);
@@ -304,65 +309,29 @@ public class ATM implements ActionListener {
             frameMainFa.setVisible(false);
         }
         if(e.getSource()== passChangeButtonFa){
-            //Dokme tayid va bargasht ro az baghie safhe ha hazf va be safhe feli ezafe mikonam
-            //majburam baraye hame safhe ha bejoz safhe feli remove bezaram chon nemidunim tu kudum safhe hastim
-            //az in farayand baraye jelogiri az tolid dokmehaye ezafi ba karkarde yeksan estefade kardam
-            //dar safhe haye amaliatie digar ham haminkar ro mikonam
-            frameCashFa.remove(confirmButtonFa);
-            frameTransferFa.remove(confirmButtonFa);
-            frameInventoryFa.remove(confirmButtonFa);
             framePassChangeFa.add(confirmButtonFa);
-
-            frameCashFa.remove(backButtonFa);
-            frameTransferFa.remove(backButtonFa);
-            frameInventoryFa.remove(backButtonFa);
-            frameFinalFa.remove(backButtonFa);
             framePassChangeFa.add(backButtonFa);
+            framePassChangeFa.add(passInput);
+
             framePassChangeFa.setVisible(true);
             frameMainFa.setVisible(false);
-            frame2Fa.remove(passInput);
-            framePassChangeFa.add(passInput);
         }
         if(e.getSource()== inventoryButtonFa){
-            framePassChangeFa.remove(confirmButtonFa);
-            frameCashFa.remove(confirmButtonFa);
-            frameTransferFa.remove(confirmButtonFa);
             frameInventoryFa.add(confirmButtonFa);
-
-            framePassChangeFa.remove(backButtonFa);
-            frameCashFa.remove(backButtonFa);
-            frameTransferFa.remove(backButtonFa);
-            frameFinalFa.remove(backButtonFa);
             frameInventoryFa.add(backButtonFa);
 
             frameInventoryFa.setVisible(true);
             frameFinalFa.setVisible(false);
         }
         if(e.getSource()== cashButtonFa){
-            framePassChangeFa.remove(confirmButtonFa);
-            frameInventoryFa.remove(confirmButtonFa);
-            frameTransferFa.remove(confirmButtonFa);
             frameCashFa.add(confirmButtonFa);
-
-            framePassChangeFa.remove(backButtonFa);
-            frameInventoryFa.remove(backButtonFa);
-            frameTransferFa.remove(backButtonFa);
-            frameFinalFa.remove(backButtonFa);
             frameCashFa.add(backButtonFa);
 
             frameCashFa.setVisible(true);
             frameMainFa.setVisible(false);
         }
         if(e.getSource()== transferButtonFa){
-            framePassChangeFa.remove(confirmButtonFa);
-            frameCashFa.remove(confirmButtonFa);
-            frameInventoryFa.remove(confirmButtonFa);
             frameTransferFa.add(confirmButtonFa);
-
-            framePassChangeFa.remove(backButtonFa);
-            frameCashFa.remove(backButtonFa);
-            frameInventoryFa.remove(backButtonFa);
-            frameFinalFa.remove(backButtonFa);
             frameTransferFa.add(backButtonFa);
 
             frameTransferFa.setVisible(true);
